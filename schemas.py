@@ -1,11 +1,11 @@
 from datetime import date
-
+from typing import Optional
 from pydantic import BaseModel, ConfigDict
 
 
 class AuthorBase(BaseModel):
     name: str
-    bio: str
+    bio: Optional[str] = None
 
 
 class AuthorCreate(AuthorBase):
@@ -21,7 +21,7 @@ class Author(AuthorBase):
 
 class BookBase(BaseModel):
     title: str
-    summary: str
+    summary: Optional[str] = None
     publication_date: date
 
     model_config = ConfigDict(arbitrary_types_allowed=True)

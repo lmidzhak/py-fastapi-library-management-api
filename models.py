@@ -7,7 +7,7 @@ from sqlalchemy.orm import relationship, Mapped, mapped_column
 class Author(Base):
     __tablename__ = 'author'
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
     bio: Mapped[str] = mapped_column(String(511), nullable=True)
     books: Mapped[list["Book"]] = relationship(

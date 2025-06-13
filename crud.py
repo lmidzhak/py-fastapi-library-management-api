@@ -8,8 +8,8 @@ from schemas import AuthorCreate, BookCreate
 
 def get_authors(
         db: Session,
-        skip: int = Query(0, ge=0),
-        limit: int = Query(10, le=100)
+        skip: int = 0,
+        limit: int = 10
 ):
     return db.query(Author).offset(skip).limit(limit).all()
 
@@ -41,8 +41,8 @@ def create_author(db: Session, author: AuthorCreate):
 def get_book_list(
         db: Session,
         author: str | None = None,
-        skip: int = Query(0, ge=0),
-        limit: int = Query(10, le=100)
+        skip: int = 0,
+        limit: int = 10
 ):
     queryset = db.query(Book)
 
